@@ -19,3 +19,12 @@ jobs:
   
       - name: Check out repository
         uses: actions/checkout@v3
+
+      - name: Save a file
+        run: Rscript -e 'x<-runif(10);save(x,file="tmp.RData")'
+        
+      - name: Upload RData file
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: tmp.RData
